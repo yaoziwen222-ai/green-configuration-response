@@ -119,7 +119,7 @@ dialog{background:#fff;color:#233b2c;border-color:#b9cdbd;box-shadow:0 15px 50px
 <section class="card surfaceCard">
  <div class="cardHeader"><div><h2>双绩效响应曲面</h2></div></div>
 <div class="canvasWrap"><canvas id="surface"></canvas></div>
-<div class="dimensionKey"><span><b>X 轴：</b>绿地空间集中度</span><span><b>Y 轴：</b>道路邻域植被覆盖率</span><span>高度：预测绿视率</span></div>
+<div class="dimensionKey"><span><b>X 轴：</b>绿地空间集中度</span><span><b>Y 轴：</b>街道绿化覆盖率</span><span>高度：预测绿视率</span></div>
 <div class="legend"><span>较低地表温度</span><span class="gradient"></span><span>较高地表温度</span></div>
 <div class="markerLegend"><span><b class="reference">优</b>双目标均衡近优参考</span><span><b class="candidate">选</b>点击曲面选定的配置</span></div>
 </section>
@@ -172,7 +172,7 @@ else base='在密集观察位置之间补足绿色缺口，利用街角与沿街
 let action=[];if(dC<-.025)action.push('通过卫星斑块和小型节点降低绿量过度集中');if(dA>.025)action.push('将可调整植被更多配置于既有道路邻域');if(dC>.025)action.push('注意集中配置可能削弱多处街道观察点的绿色可见性');if(dA<-.025)action.push('检查沿街植被减少是否影响可见绿色与地表热环境');if(!action.length)action.push('维持主体布局，结合现场调查优化植被层次和沿街界面');
 return {base,action:action.join('；')+'。'}}
  function render(){let s=state.scenario,b=getCA(s,state.base),t=getCA(s,state.target),dg=s.gvi[state.target]-s.gvi[state.base],dl=s.lst[state.target]-s.lst[state.base];
-$('context').innerHTML='<b>本情境样本的配置范围（第 5—95 百分位）</b><br>绿地空间集中度：'+fmt(s.C_range[0])+'–'+fmt(s.C_range[1])+'<br>道路邻域植被覆盖率：'+fmt(s.A_range[0])+'–'+fmt(s.A_range[1])+'<br><small>曲面有色区域为其中有相近样本支持的组合。</small>';
+$('context').innerHTML='<b>本情境样本的配置范围（第 5—95 百分位）</b><br>绿地空间集中度：'+fmt(s.C_range[0])+'–'+fmt(s.C_range[1])+'<br>街道绿化覆盖率：'+fmt(s.A_range[0])+'–'+fmt(s.A_range[1])+'<br><small>曲面有色区域为其中有相近样本支持的组合。</small>';
 
 $('pair').innerHTML='<div>均衡近优参考<b>C '+fmt(b.C)+' / A '+fmt(b.A)+'</b></div><div>'+(state.mode==='gvi'?'最高绿视率配置':state.mode==='temp'?'最低地表温度配置':'曲面所选配置')+'<b>C '+fmt(t.C)+' / A '+fmt(t.A)+'</b></div>';
 $('gviValue').textContent=fmt(s.gvi[state.target],1)+'%';$('lstValue').textContent=fmt(s.lst[state.target],2)+' ℃';
